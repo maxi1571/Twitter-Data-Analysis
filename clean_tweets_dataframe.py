@@ -38,10 +38,10 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """        
-        df['polarity'] = pd.to_numeric(df["polarity"])
-        df["subjectivity"] = pd.to_numeric(df["subjectivity"])
-        df["retweet_count"] = pd.to_numeric(df["retweet_count"])
-        df["favorite_count"] = pd.to_numeric(df["favorite_count"])
+        df['polarity'] = pd.to_numeric("polarity")
+        df["subjectivity"] = pd.to_numeric("subjectivity")
+        df["retweet_count"] = pd.to_numeric("retweet_count")
+        df["favorite_count"] = pd.to_numeric("favorite_count")
         
         return df
     
@@ -50,6 +50,6 @@ class Clean_Tweets:
         remove non english tweets from lang
         """
         
-        df= df.apply(lambda x: re.sub(r"[^a-z\s\(\-:\)\\\/\];='#]", '', x))
+        self.df = df[df['lang']=='en']
         
         return df
