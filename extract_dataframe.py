@@ -13,12 +13,12 @@ def read_json(json_file: str)->list:
     -------
     length of the json file and a list of json
     """
-    
+
     tweets_data = []
     for tweets in open(json_file,'r'):
         tweets_data.append(json.loads(tweets))
     
-    
+
     return len(tweets_data), tweets_data
 
 class TweetDfExtractor:
@@ -35,34 +35,58 @@ class TweetDfExtractor:
 
     # an example function
     def find_statuses_count(self)->list:
-        statuses_count 
+        statuses_count = [x['user']['statuses_count'] if 'statuses_count' in x else '' for x in self.tweet_list]
+        
+        # for x in self.tweet_list:
+        #     if 'user' in x:
+        #         statuses_count.append(x['user']['statuses_count'])
+        #     if 'extended_tweet' in x:
+        #         statuses_count.append(x['retweeted_status']['user']['statuses_count'])
+        #     else:
+        #         statuses_count.append('')
+        return statuses_count
         
     def find_full_text(self)->list:
-        text = 
-       
-    
+        try:
+            text = [x['extended_tweet']['full_text'] for x in self.tweets_list]
+        except KeyError:
+            text = None
+        return text
     def find_sentiments(self, text)->list:
         
         return polarity, self.subjectivity
 
     def find_created_time(self)->list:
-       
+        try:
+            created_at = [x['created_at'] for x in self.tweets_list]
+        except KeyError:
+            created_at = None
         return created_at
 
     def find_source(self)->list:
-        source = 
-
+        try:
+            source = [x['source'] for x in self.tweets_list]
+        except KeyError:
+            source = None
         return source
 
     def find_screen_name(self)->list:
-        screen_name = 
-
+        try:
+            screen_name = [x['screen_name'] for x in self.tweets_list]
+        except KeyError:
+            screen_name = None
+        return screen_name
     def find_followers_count(self)->list:
-        followers_count = 
-
+        try:
+            followers_count = [x['user']['followers_count'] for x in self.tweets_list]
+        except KeyError:
+            followers_count = None
+        return followers_count
     def find_friends_count(self)->list:
-        friends_count = 
-
+        try:
+            friends_count = [x['user']['friends_count'] for x in self.tweets_list]
+        except KeyError:
+            friends_count = None
     def is_sensitive(self)->list:
         try:
             is_sensitive = [x['possibly_sensitive'] for x in self.tweets_list]
@@ -72,17 +96,28 @@ class TweetDfExtractor:
         return is_sensitive
 
     def find_favourite_count(self)->list:
-        
-    
+        try:
+            favorites_count = [x['retweeted_status']['favorite_count'] for x in self.tweets_list]
+        except KeyError:
+            favorites_count = None
+        return favorites_count
     def find_retweet_count(self)->list:
-        retweet_count = 
-
+        try:
+            retweet_count =  [x['retweeted_status']['retweet_count'] for x in self.tweets_list]
+        except KeyError:
+            retweet_count = None
+        return retweet_count
     def find_hashtags(self)->list:
-        hashtags =
-
+        try:
+            hashtags =  [x['extended_tweet']['entities']['hashtags'] for x in self.tweets_list]
+        except KeyError:
+            hashtags = None 
     def find_mentions(self)->list:
-        mentions = 
-
+        try:
+            mentions = [x['extended_tweet']['entities']['user_mentions'] for x in self.tweets_list]
+        except TypeError:
+            mentions = None
+        return mentions
 
     def find_location(self)->list:
         try:
