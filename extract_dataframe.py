@@ -141,22 +141,7 @@ class TweetDfExtractor:
         hashtags = self.find_hashtags()
         mentions = self.find_mentions()
         location = self.find_location()
-        print("hashtages"+str(len(hashtags)))
-        print("mention",len(mentions))
-        print("sentsitive",len(sensitivity))
-        print("screen_name", len(screen_name))
-        print("polarity", len(polarity))
-        print("location", len(location))
-        print("friends_count", len(friends_count))
-        print("retweet_count", len(retweet_count))
-        print("source", len(source))
-        print("text", len(text))
-        print("follower_count", len(follower_count))
-        print("fav_count",len(fav_count))
-        print("subjectivity", len(subjectivity))
-        print("created_at", len(created_at))
-        print("fav_count",len(fav_count))
-        print("lang", len(lang))
+
         data = zip(created_at, source, text, polarity, subjectivity,lang, fav_count, retweet_count, screen_name, follower_count, friends_count, sensitivity, hashtags, mentions, location)
         df = pd.DataFrame(data=data, columns=columns)
 
@@ -171,7 +156,7 @@ if __name__ == "__main__":
     # required column to be generated you should be creative and add more features
     columns = ['created_at', 'source', 'original_text','clean_text', 'sentiment','polarity','subjectivity','lang','favorite_count', 'retweet_count', 
     'original_author', 'screen_count', 'followers_count','friends_count','possibly_sensitive', 'hashtags', 'user_mentions', 'place', 'place_coord_boundaries']
-    print(len(columns))
+
     _, tweet_list = read_json("./data/covid19.json")
     tweet = TweetDfExtractor(tweet_list)
     tweet_df = tweet.get_tweet_df(save=True) 
