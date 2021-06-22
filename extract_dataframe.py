@@ -35,12 +35,15 @@ class TweetDfExtractor:
 
     # an example function
     def find_statuses_count(self)->list:
-        statuses_count = [x['user']['statuses_count'] if 'statuses_count' in x else '' for x in self.tweet_list]
-        return statuses_count
+        try:
+            statuses_count = [x['user']['statuses_count'] if 'user' in x else '' for x in self.tweets_list]
+            return statuses_count
+        except TypeError:
+            statuses_count = ''
         
     def find_full_text(self)->list:
         try:
-            text = [x['extended_tweet']['full_text'] if 'extended_tweet' in x else '' for x in self.tweets_list]
+            text = [x['retweeted_status']['extended_tweet']['full_text'] if 'retweeted_status' in x and 'extended_tweet' in x else '' for x in self.tweets_list]
         except TypeError:
             text = ''
         return text
@@ -67,7 +70,7 @@ class TweetDfExtractor:
 
     def find_screen_name(self)->list:
 
-        screen_name = [x['screen_name'] if 'screen_name' in x else '' for x in self.tweets_list]
+        screen_name = [x['user']['screen_name'] if 'user' in x else '' for x in self.tweets_list]
 
         return screen_name
     def find_followers_count(self)->list:
@@ -80,9 +83,9 @@ class TweetDfExtractor:
         return friends_count
     def is_sensitive(self)->list:
         try:
-            is_sensitive = [x['possibly_sensitive'] if 'possible_sensitive' in x else '' for x in self.tweets_list]
+            is_sensitive = [x['possibly_sensitive'] if 'possible_sensitive' in x else None for x in self.tweets_list]
         except TypeError:
-            is_sensitive = ''
+            is_sensitive = None
 
         return is_sensitive
 
