@@ -40,7 +40,7 @@ class TweetDfExtractor:
         
     def find_full_text(self)->list:
         try:
-            text = [x['extended_tweet']['full_text'] if 'extended_tweet' in x else '' for x in self.tweets_list]
+            text = [x['retweeted_status']['extended_tweet']['full_text'] if 'retweeted_status' in x else '' for x in self.tweets_list]
         except TypeError:
             text = ''
         return text
@@ -80,9 +80,9 @@ class TweetDfExtractor:
         return friends_count
     def is_sensitive(self)->list:
         try:
-            is_sensitive = [x['possibly_sensitive'] if 'possible_sensitive' in x else '' for x in self.tweets_list]
+            is_sensitive = [x['possibly_sensitive'] if 'possible_sensitive' in x else None for x in self.tweets_list]
         except TypeError:
-            is_sensitive = ''
+            is_sensitive = None
 
         return is_sensitive
 
