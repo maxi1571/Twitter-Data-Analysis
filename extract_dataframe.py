@@ -41,9 +41,10 @@ class TweetDfExtractor:
         except TypeError:
             statuses_count = ''
 
-    def find_full_text(self)->list:
+    def find_full_text(self) -> list:
         try:
-            text = [x['retweeted_status']['extended_tweet']['full_text'] if 'retweeted_status' in x and 'extended_tweet' in x else '' for x in self.tweets_list]
+            text = [tweet['retweeted_status']['extended_tweet']['full_text']
+                    if ('retweeted_status' in tweet and 'extended_tweet' in tweet['retweeted_status']) else '' for tweet in self.tweets_list]
         except TypeError:
             text = ''
         return text
@@ -124,8 +125,7 @@ class TweetDfExtractor:
     
         return mentions
 
-Mercury, [22.06.21 22:27]
-def find_location(self)->list:
+    def find_location(self)->list:
         try:
             location =  [x['user']['location'] if 'user'in x else "" for x in self.tweets_list]
         except TypeError:
