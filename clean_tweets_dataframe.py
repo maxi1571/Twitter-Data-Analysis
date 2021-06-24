@@ -26,7 +26,7 @@ class Clean_Tweets:
         drop duplicate rows
         """
 
-        df = df.drop_duplicates()
+        df.drop_duplicates(keep=False,inplace=True)
 
         return df
 
@@ -34,7 +34,7 @@ class Clean_Tweets:
         """
         convert column to datetime
         """
-
+        df['created_at']= pd.to_datetime(df['created_at'])
         df = df[df['created_at'] >= '2020-12-31']
 
         return df
@@ -44,6 +44,10 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """
+        df['polarity'] = pd.to_numeric(df["polarity"])
+        df["subjectivity"] = pd.to_numeric(df["subjectivity"])
+        df["retweet_count"] = pd.to_numeric(df["retweet_count"])
+        df["favorite_count"] = pd.to_numeric(df["favorite_count"])
 
         return df
 
@@ -62,5 +66,10 @@ if __name__ == "__main__":
     clean_tweets = Clean_Tweets(df=df)
     df = clean_tweets.drop_duplicate(df)
     df = clean_tweets.remove_non_english_tweets(df)
-    df.to_csv('clean_processed_tweet_data.csv')
-    print('File Successfully Saved.!!!')
+    df = clean_tweets.convert_to_datetime(df)
+    df = clean_tweets.drop_unwanted_column(df)
+    df = clean_tweets.convert_to_numbers(df)
+    print(df['polarity'][0:5])
+    
+    #df.to_csv('clean_processed_tweet_data.csv')
+    #print('File Successfully Saved.!!!')
