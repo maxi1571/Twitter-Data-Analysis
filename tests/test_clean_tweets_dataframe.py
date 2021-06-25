@@ -20,17 +20,18 @@ class Test_Clean_Tweet(unittest.TestCase):
         #  tweet_df = self.df.get_tweet_df()         
 
 
-    def test_drop_unwanted_column(self):
-        self.assertEqual(self.df.drop_unwanted_column(df).columns, columns)
+    # def test_drop_unwanted_column(self):
+    #     self.assertEqual(self.df.drop_unwanted_column(df).columns, columns)
 
     def test_convert_to_datetime(self):
-        self.assertEqual(self.df['creat_at'],[])
-
+        self.assertEqual(self.df.dtypes['created_at'], "object")
+    
     def test_drop_duplicate(self):
-        self.assertEqual(self.df,[])
+        self.assertEqual(self.df.duplicated().sum(),0)
     
     def test_convert_to_numbers(self):
-        self.assertEqual(type(self.df['polarity'][0]),int) 
+        numeric_df=self.df[['polarity','subjectivity','retweet_count','favorite_count','followers_count','friends_count']]
+        self.assertEqual(numeric_df.dtypes.tolist(), ["float64","float64","float64","float64","int64","int64"])
 
     def test_remove_non_english_tweets(self):
         self.assertEqual(self.df['lang'].values.all(),np.array(["en" for _ in range(len(self.df['lang'].values))],dtype=object).all())
