@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath(os.path.join('..')))
 
 from clean_tweets_dataframe import Clean_Tweets
 
-df = pd.read_csv("../clean_processed_tweet_data.csv")
+df = pd.read_csv("/clean_processed_tweet_data.csv")
 columns = ['created_at', 'source', 'original_text','clean_text', 'sentiment','polarity','subjectivity', 'lang', 'favorite_count', 'retweet_count', 
     'original_author', 'screen_count', 'followers_count','friends_count','possibly_sensitive', 'hashtags', 'user_mentions', 'place', 'place_coord_boundaries']
 
