@@ -9,10 +9,11 @@
 
 ## Data
 
-* The data is collected using the keywords: 
-        - "COVID19 Africa"
-        - "COVID19 Vaccination Africa"
-        - "Sars-Cov2 Mutation Africa"
+* The data is collected using the keywords:
+
+    "COVID19 Africa"
+    "COVID19 Vaccination Africa"
+    "Sars-Cov2 Mutation Africa"
 
 * The length of data collected is around 6225 rows and was saved in a json format.
 
