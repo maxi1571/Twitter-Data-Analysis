@@ -1,4 +1,4 @@
-# Twitter-Data-Analysis
+# Twitter Data Sentiment Analysis and Topic Modeling
 
 ## Abstract
 * The project focuses on using sentiment and topic analysis on a Twitter dataset to generate a 
@@ -20,7 +20,7 @@
 
 ## Methodology
 
-### Data extraction and cleaning
+### Data Extraction and Cleaning
 
 * Data set was provided as a json file. The json file contains different keys to find specific
   keywords to contain in the dataset. Using python the json file was read and 19 different columns with 6225 rows were built by selecting specific keywords.
@@ -29,7 +29,7 @@
 * For topic modeling nltk is used to further clean and remove stopwords.Model building.
 
 
-### MOdel building
+### MOdel Building
 
 * From the cleaned data set ‘original_text’ and ‘polarity’ was used to train the model.
 * Using sklearn train test split the cleaned data was splitted for training.
@@ -38,13 +38,13 @@
 * Gensim model is used for topic modeling.
 
 
-### Code testing
+### Code Testing
 
 * Unittesting was created for data extraction and data cleaning python scripts to
   test the code. Travis CI was used to automate the testing of the scripts every time change took place in the code.
 
 
-### Data loading to database
+### Data Loading to Database
 
 * An SQL database Tweet was created. A database schema was created for 14 columns to be inserted
   in the database.
@@ -56,6 +56,19 @@
 * Using streamlit library a web app was created in order to visualization our dataset
 * Tweet SQL database was connected to the web app
 * Data set visualization was performed in the web app for multiple analysis made upon the data.
+
+
+## Running the Web App
+
+### Steps
+            * First download the requirments by running the command "pip install -r requirements.txt" on
+            terminal.
+            * Create an SQL database using the schema.sql provide.
+            * Specify your SQL database on add_data.py to your version and specify the port number.
+            * run add_data.py
+            * Then run web_app.py using the command "streamlit run web_app.py"
+            * It will open a localhost
+            * It will open a dashboard which you can manipulate the data and see different data version visulization
 
 
 ## Result Conclusion
