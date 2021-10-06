@@ -69,6 +69,13 @@
       - Then run web_app.py using the command "streamlit run web_app.py"
       - It will open a localhost
       - It will open a dashboard which you can manipulate the data and see different data version visulization
+ 
+### web app visulizations
+
+![word_cloud](https://user-images.githubusercontent.com/42535161/136288895-2ddb439a-a466-4530-97e8-d39d698ca773.png)
+![Text_catagory](https://user-images.githubusercontent.com/42535161/136288825-43955bbc-a3a8-487b-bab7-9d36e630099b.png)
+![Top_5_locations _chart](https://user-images.githubusercontent.com/42535161/136288844-afe75ec2-166a-4607-ad5e-0377adc842dc.png)
+
 
 ## Result Conclusion
 
