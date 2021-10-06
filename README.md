@@ -58,6 +58,18 @@
 * Data set visualization was performed in the web app for multiple analysis made upon the data.
 
 
+## Running the Web App
+
+### Steps
+      * First download the requirments by running the command "pip install -r requirements.txt" on
+      terminal.
+      * Create an SQL database using the schema.sql provide.
+      * Specify your SQL database on add_data.py to your version and specify the port number.
+      * run add_data.py
+      * Then run web_app.py using the command "streamlit run web_app.py"
+      * It will open a localhost
+      * It will open a dashboard which you can manipulate the data and see different data version visulization
+
 ## Result Conclusion
 
 * So far the trained model was tested using unseen data and an accuracy of 97% was found for
