@@ -61,14 +61,14 @@
 ## Running the Web App
 
 ### Steps
-      * First download the requirments by running the command "pip install -r requirements.txt" on
-      terminal.
-      * Create an SQL database using the schema.sql provide.
-      * Specify your SQL database on add_data.py to your version and specify the port number.
-      * run add_data.py
-      * Then run web_app.py using the command "streamlit run web_app.py"
-      * It will open a localhost
-      * It will open a dashboard which you can manipulate the data and see different data version visulization
+      - First download the requirments by running the command "pip install -r requirements.txt" on
+        terminal.
+      - Create an SQL database using the schema.sql provide.
+      - Specify your SQL database on add_data.py to your version and specify the port number.
+      - run add_data.py
+      - Then run web_app.py using the command "streamlit run web_app.py"
+      - It will open a localhost
+      - It will open a dashboard which you can manipulate the data and see different data version visulization
 
 ## Result Conclusion
 
